@@ -1,9 +1,8 @@
 package ar.edu.ubp.das.ws;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.jws.WebMethod;
@@ -19,7 +18,8 @@ import ar.edu.ubp.das.db.DaoFactory;
 
 @WebService(targetNamespace = "http://ws.das.ubp.edu.ar/", portName = "TokenPort", serviceName = "TokenService")
 public class GenerarToken {
-
+	// Cantidad de milisegundos en una hora
+	static final Long DURATION = ((60l * 60l) * 1000l);
 	
 	@WebMethod(operationName = "getToken", action = "urn:GetToken")
 	public TokenResponseBean getToken(@WebParam(name = "arg0") TokenRequestBean request) {
@@ -36,11 +36,13 @@ public class GenerarToken {
 			
 			TokenBean token = new TokenBean();
 			
-			LocalDateTime fecha = LocalDateTime.now();
+			Timestamp fecha = new Timestamp(Calendar.getInstance().getTime().getTime());
 			
 			token.setIdEntidad(entidad.getId());
-			token.setFechaCreacion(Date.valueOf(fecha.toLocalDate()));
-			token.setFechaExpiracion(Date.valueOf(fecha.toLocalDate().plusDays(1)));
+			token.setFechaCreacion(fecha);
+			// Agregamos 8 horas, se puede cambiar el valor para cambiar la duracion
+			
+			token.setFechaExpiracion(new Timestamp(fecha.getTime() + (DURATION * 8)));
 			
 		try {
 			Dao<TokenBean, TokenBean> dao = DaoFactory.getDao("Token", "ar.edu.ubp.das");

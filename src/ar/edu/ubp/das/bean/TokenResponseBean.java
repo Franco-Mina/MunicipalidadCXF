@@ -1,11 +1,11 @@
 package ar.edu.ubp.das.bean;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class TokenResponseBean {
 
 	private String token;
-	private Date fechaExpiracion;
+	private Timestamp fechaExpiracion;
 	private int respuesta;
 	private String mensaje;
 	public String getToken() {
@@ -14,10 +14,10 @@ public class TokenResponseBean {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public Date getFechaExpiracion() {
+	public Timestamp getFechaExpiracion() {
 		return fechaExpiracion;
 	}
-	public void setFechaExpiracion(Date fechaExpiracion) {
+	public void setFechaExpiracion(Timestamp fechaExpiracion) {
 		this.fechaExpiracion = fechaExpiracion;
 	}
 	public int getRespuesta() {

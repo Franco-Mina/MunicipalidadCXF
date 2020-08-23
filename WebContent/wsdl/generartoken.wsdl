@@ -28,15 +28,17 @@
 
   <xs:complexType name="tokenResponseBean">
     <xs:sequence>
-      <xs:element minOccurs="0" name="fechaExpiracion" type="tns:date"/>
+      <xs:element minOccurs="0" name="fechaExpiracion" type="tns:timestamp"/>
       <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
       <xs:element name="respuesta" type="xs:int"/>
       <xs:element minOccurs="0" name="token" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="date">
-    <xs:sequence/>
+  <xs:complexType name="timestamp">
+    <xs:sequence>
+      <xs:element name="nanos" type="xs:int"/>
+    </xs:sequence>
   </xs:complexType>
 
 </xs:schema>
@@ -71,7 +73,7 @@
   </wsdl:binding>
   <wsdl:service name="TokenService">
     <wsdl:port name="TokenPort" binding="tns:TokenServiceSoapBinding">
-      <soap:address location="http://localhost:8080/MunicipalidadCxf/services/TokenPort"/>
+      <soap:address location="http://localhost:8080/MunicipalidadCxf/services"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
