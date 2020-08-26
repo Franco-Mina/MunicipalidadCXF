@@ -68,5 +68,5 @@ public class MSTokenDao extends Dao<TokenBean, TokenBean>{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
 }

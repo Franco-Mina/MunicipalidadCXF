@@ -20,13 +20,13 @@ import javax.xml.bind.annotation.XmlType;
 public class GetTokenResponse {
 
     @XmlElement(name = "return")
-    private ar.edu.ubp.das.bean.TokenResponseBean _return;
+    private ar.edu.ubp.das.bean.ws.TokenResponseBean _return;
 
-    public ar.edu.ubp.das.bean.TokenResponseBean getReturn() {
+    public ar.edu.ubp.das.bean.ws.TokenResponseBean getReturn() {
         return this._return;
     }
 
-    public void setReturn(ar.edu.ubp.das.bean.TokenResponseBean new_return)  {
+    public void setReturn(ar.edu.ubp.das.bean.ws.TokenResponseBean new_return)  {
         this._return = new_return;
     }
 

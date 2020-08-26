@@ -11,8 +11,8 @@ import javax.jws.WebService;
 
 import ar.edu.ubp.das.bean.EntidadBean;
 import ar.edu.ubp.das.bean.TokenBean;
-import ar.edu.ubp.das.bean.TokenRequestBean;
-import ar.edu.ubp.das.bean.TokenResponseBean;
+import ar.edu.ubp.das.bean.ws.TokenRequestBean;
+import ar.edu.ubp.das.bean.ws.TokenResponseBean;
 import ar.edu.ubp.das.db.Dao;
 import ar.edu.ubp.das.db.DaoFactory;
 
@@ -40,8 +40,8 @@ public class GenerarToken {
 			
 			token.setIdEntidad(entidad.getId());
 			token.setFechaCreacion(fecha);
-			// Agregamos 8 horas, se puede cambiar el valor para cambiar la duracion
 			
+			// Agregamos 8 horas, se puede cambiar el valor para cambiar la duracion
 			token.setFechaExpiracion(new Timestamp(fecha.getTime() + (DURATION * 8)));
 			
 		try {

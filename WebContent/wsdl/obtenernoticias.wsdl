@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ObtenerNoticiasService" targetNamespace="http://ws.das.ubp.edu.ar/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.das.ubp.edu.ar/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.das.ubp.edu.ar/" version="1.0" xmlns:tns="http://ws.das.ubp.edu.ar/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="getNoticias" type="tns:getNoticias"/>
+
+  <xs:element name="getNoticiasResponse" type="tns:getNoticiasResponse"/>
+
+  <xs:complexType name="getNoticias">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getNoticiasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:noticiaResponseBean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="noticiaResponseBean">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
+      <xs:element minOccurs="0" name="novedades" type="xs:string"/>
+      <xs:element name="respuesta" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getNoticiasResponse">
+    <wsdl:part name="parameters" element="tns:getNoticiasResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getNoticias">
+    <wsdl:part name="parameters" element="tns:getNoticias">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ObtenerNoticias">
+    <wsdl:operation name="getNoticias">
+      <wsdl:input name="getNoticias" message="tns:getNoticias">
+    </wsdl:input>
+      <wsdl:output name="getNoticiasResponse" message="tns:getNoticiasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ObtenerNoticiasServiceSoapBinding" type="tns:ObtenerNoticias">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getNoticias">
+      <soap:operation soapAction="urn:GetNoticias" style="document"/>
+      <wsdl:input name="getNoticias">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getNoticiasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ObtenerNoticiasService">
+    <wsdl:port name="ObtenerNoticiasPort" binding="tns:ObtenerNoticiasServiceSoapBinding">
+      <soap:address location="http://localhost:8080/MunicipalidadCxf/services"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

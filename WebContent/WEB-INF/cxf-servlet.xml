@@ -12,4 +12,14 @@
 			<bean class="org.apache.cxf.feature.LoggingFeature" />
 		</jaxws:features>
 	</jaxws:endpoint>
+	<jaxws:endpoint xmlns:tns="http://ws.das.ubp.edu.ar/"
+		id="obtenernoticias" implementor="ar.edu.ubp.das.ws.ObtenerNoticias"
+		wsdlLocation="wsdl/obtenernoticias.wsdl"
+		endpointName="tns:ObtenerNoticiasPort"
+		serviceName="tns:ObtenerNoticiasService"
+		address="/ObtenerNoticiasPort">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
 </beans>

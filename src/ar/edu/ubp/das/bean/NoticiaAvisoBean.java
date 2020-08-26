@@ -1,13 +1,13 @@
 package ar.edu.ubp.das.bean;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class NoticiaAvisoBean {
 
 	private int id;
 	private String tipo;
 	private String mensaje;
-	private Date fecha;
+	private Timestamp fecha;
 	
 	public int getId() {
 		return id;
@@ -27,10 +27,10 @@ public class NoticiaAvisoBean {
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
-	public Date getFecha() {
+	public Timestamp getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(Timestamp fecha) {
 		this.fecha = fecha;
 	}
 	

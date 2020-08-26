@@ -20,13 +20,13 @@ import javax.xml.bind.annotation.XmlType;
 public class GetToken {
 
     @XmlElement(name = "arg0")
-    private ar.edu.ubp.das.bean.TokenRequestBean arg0;
+    private ar.edu.ubp.das.bean.ws.TokenRequestBean arg0;
 
-    public ar.edu.ubp.das.bean.TokenRequestBean getArg0() {
+    public ar.edu.ubp.das.bean.ws.TokenRequestBean getArg0() {
         return this.arg0;
     }
 
-    public void setArg0(ar.edu.ubp.das.bean.TokenRequestBean newArg0)  {
+    public void setArg0(ar.edu.ubp.das.bean.ws.TokenRequestBean newArg0)  {
         this.arg0 = newArg0;
     }
 
