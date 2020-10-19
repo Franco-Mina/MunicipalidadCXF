@@ -1,9 +1,16 @@
 package ar.edu.ubp.das.daos;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import ar.edu.ubp.das.bean.TokenBean;
 import ar.edu.ubp.das.db.Dao;
@@ -69,4 +76,37 @@ public class MSTokenDao extends Dao<TokenBean, TokenBean>{
 		return false;
 	}
 	
+
+	public boolean valid(String token, String usuario) {
+
+		boolean any = false;
+		Connection conn;
+		CallableStatement stmt;
+		try {
+			Context environment = Context.class.cast((new InitialContext()).lookup("java:comp/env"));	
+			Class.forName((String)environment.lookup("ProviderName"));
+			conn=DriverManager.getConnection((String)environment.lookup("ConnectionString"));
+			conn.setAutoCommit(false);
+			try {
+				
+				stmt = conn.prepareCall("{CALL dbo.VALIDAR_TOKEN(?,?)}");
+				stmt.setString(1, token);
+				stmt.setString(2, usuario);
+				
+				ResultSet resultSet = stmt.executeQuery();
+				any = resultSet.next();
+				
+				stmt.close();
+				}catch (SQLException e) {
+					// TODO: handle exception		
+					e.printStackTrace();
+				}finally {
+					conn.close();
+				}
+		} catch (ClassNotFoundException | NamingException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return any;
+	}
 }

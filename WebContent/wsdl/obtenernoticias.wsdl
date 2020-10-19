@@ -10,21 +10,12 @@
   <xs:complexType name="getNoticias">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string"/>
-      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="getNoticiasResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:noticiaResponseBean"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="noticiaResponseBean">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
-      <xs:element minOccurs="0" name="novedades" type="xs:string"/>
-      <xs:element name="respuesta" type="xs:int"/>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -60,7 +51,7 @@
   </wsdl:binding>
   <wsdl:service name="ObtenerNoticiasService">
     <wsdl:port name="ObtenerNoticiasPort" binding="tns:ObtenerNoticiasServiceSoapBinding">
-      <soap:address location="http://localhost:8080/MunicipalidadCxf/services"/>
+      <soap:address location="http://localhost:8080/MunicipalidadCxf/services/ObtenerNoticiasPort"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

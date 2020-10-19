@@ -1,15 +1,21 @@
 package ar.edu.ubp.das.bean.ws;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ar.edu.ubp.das.bean.NoticiaAvisoBean;
+
 public class NoticiaResponseBean {
 
-	private String novedades;
+	private List<NoticiaAvisoBean> novedades = new ArrayList<NoticiaAvisoBean>();
 	private int respuesta;
 	private String mensaje;
-	public String getNovedades() {
+	
+	public List<NoticiaAvisoBean> getNovedades() {
 		return novedades;
 	}
-	public void setNovedades(String novedades) {
-		this.novedades = novedades;
+	public void setNovedades(List<NoticiaAvisoBean> novedades) {
+		this.novedades.addAll(novedades);
 	}
 	public int getRespuesta() {
 		return respuesta;

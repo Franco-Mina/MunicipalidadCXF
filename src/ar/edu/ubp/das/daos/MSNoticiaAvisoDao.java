@@ -23,7 +23,7 @@ public class MSNoticiaAvisoDao extends Dao<NoticiaAvisoBean, Void> {
 
 	@Override
 	public NoticiaAvisoBean make(ResultSet resultSet) throws SQLException {
-NoticiaAvisoBean bean = new NoticiaAvisoBean();
+		NoticiaAvisoBean bean = new NoticiaAvisoBean();
 		
 		bean.setFecha(resultSet.getTimestamp("fecha"));
 		bean.setMensaje(resultSet.getString("mensaje"));

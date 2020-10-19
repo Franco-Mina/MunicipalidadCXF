@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wsdl:definitions name="TokenService" targetNamespace="http://ws.das.ubp.edu.ar/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.das.ubp.edu.ar/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
   <wsdl:types>
-    <xs:schema targetNamespace="http://ws.das.ubp.edu.ar/" version="1.0" xmlns:tns="http://ws.das.ubp.edu.ar/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.das.ubp.edu.ar/" version="1.0" xmlns:tns="http://ws.das.ubp.edu.ar/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <xs:element name="getToken" type="tns:getToken"/>
 
@@ -9,35 +9,13 @@
 
   <xs:complexType name="getToken">
     <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="tns:tokenRequestBean"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="tokenRequestBean">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="password" type="xs:string"/>
-      <xs:element minOccurs="0" name="usuario" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="getTokenResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:tokenResponseBean"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="tokenResponseBean">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="fechaExpiracion" type="tns:timestamp"/>
-      <xs:element minOccurs="0" name="mensaje" type="xs:string"/>
-      <xs:element name="respuesta" type="xs:int"/>
-      <xs:element minOccurs="0" name="token" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="timestamp">
-    <xs:sequence>
-      <xs:element name="nanos" type="xs:int"/>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
