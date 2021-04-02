@@ -17,13 +17,15 @@ public class MSReporteDao extends Dao<ReporteBean, ReporteBean>{
 
 	@Override
 	public ReporteBean insert(ReporteBean reporte) throws SQLException {
-		this.setProcedure("dbo.InsertarReporte(?,?,?,?,?)");
+		this.connect();
 		
-		this.setParameter(0, reporte.getIdServicio());
-		this.setParameter(1, reporte.getTotalHoy());
-		this.setParameter(2, reporte.getTotalCanceladasHoy());
-		this.setParameter(3, reporte.getFechaDesde());
-		this.setParameter(4, reporte.getFechaHasta());
+		this.setProcedure("dbo.INSERTAR_REPORTE(?,?,?,?,?)");
+		
+		this.setParameter(1, reporte.getIdServicio());
+		this.setParameter(2, reporte.getTotalHoy());
+		this.setParameter(3, reporte.getTotalCanceladasHoy());
+		this.setParameter(4, reporte.getFechaDesde());
+		this.setParameter(5, reporte.getFechaHasta());
 		
 		this.executeUpdate();
 		

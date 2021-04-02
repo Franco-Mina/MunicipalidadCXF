@@ -6,6 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebService;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -19,9 +22,11 @@ import ar.edu.ubp.das.bean.ws.ReportesResponseBean;
 import ar.edu.ubp.das.db.Dao;
 import ar.edu.ubp.das.db.DaoFactory;
 
+@WebService(targetNamespace = "http://ws.das.ubp.edu.ar/", portName = "GuardarEstadisticasPort", serviceName = "GuardarEstadisticasService")
 public class GuardarEstadisticas {
 
-	public String guardarEstadisticas(String request) {
+	@WebMethod(operationName = "guardarEstadisticas", action = "urn:GuardarEstadisticas")
+	public String guardarEstadisticas(@WebParam(name = "arg0") String request) {
 		
 		ReportesResponseBean response = new ReportesResponseBean();
 		

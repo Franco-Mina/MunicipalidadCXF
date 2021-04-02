@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="GuardarEstadisticasService" targetNamespace="http://ws.das.ubp.edu.ar/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.das.ubp.edu.ar/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.das.ubp.edu.ar/" version="1.0" xmlns:tns="http://ws.das.ubp.edu.ar/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="guardarEstadisticas" type="tns:guardarEstadisticas"/>
+
+  <xs:element name="guardarEstadisticasResponse" type="tns:guardarEstadisticasResponse"/>
+
+  <xs:complexType name="guardarEstadisticas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="guardarEstadisticasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="guardarEstadisticas">
+    <wsdl:part name="parameters" element="tns:guardarEstadisticas">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="guardarEstadisticasResponse">
+    <wsdl:part name="parameters" element="tns:guardarEstadisticasResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GuardarEstadisticas">
+    <wsdl:operation name="guardarEstadisticas">
+      <wsdl:input name="guardarEstadisticas" message="tns:guardarEstadisticas">
+    </wsdl:input>
+      <wsdl:output name="guardarEstadisticasResponse" message="tns:guardarEstadisticasResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GuardarEstadisticasServiceSoapBinding" type="tns:GuardarEstadisticas">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="guardarEstadisticas">
+      <soap:operation soapAction="urn:GuardarEstadisticas" style="document"/>
+      <wsdl:input name="guardarEstadisticas">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="guardarEstadisticasResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GuardarEstadisticasService">
+    <wsdl:port name="GuardarEstadisticasPort" binding="tns:GuardarEstadisticasServiceSoapBinding">
+      <soap:address location="http://localhost:8080/MunicipalidadCxf/services/GuardarEstadisticasPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
