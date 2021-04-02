@@ -100,12 +100,14 @@ public class MSTokenDao extends Dao<TokenBean, TokenBean>{
 				}catch (SQLException e) {
 					// TODO: handle exception		
 					e.printStackTrace();
+					any = false;
 				}finally {
 					conn.close();
 				}
 		} catch (ClassNotFoundException | NamingException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			any = false;
 		}
 		return any;
 	}

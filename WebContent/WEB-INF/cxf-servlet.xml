@@ -22,4 +22,15 @@
 			<bean class="org.apache.cxf.feature.LoggingFeature" />
 		</jaxws:features>
 	</jaxws:endpoint>
+	<jaxws:endpoint xmlns:tns="http://ws.das.ubp.edu.ar/"
+		id="guardarestadisticas"
+		implementor="ar.edu.ubp.das.ws.GuardarEstadisticas"
+		wsdlLocation="wsdl/guardarestadisticas.wsdl"
+		endpointName="tns:GuardarEstadisticasPort"
+		serviceName="tns:GuardarEstadisticasService"
+		address="/GuardarEstadisticasPort">
+		<jaxws:features>
+			<bean class="org.apache.cxf.feature.LoggingFeature" />
+		</jaxws:features>
+	</jaxws:endpoint>
 </beans>
